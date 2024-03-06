@@ -1,0 +1,125 @@
+
+
+       Packages to Install
+
+
+
+          Microsoft.Entity.Framework Core
+
+
+          Microsoft.Entity.Framework Core.SqlServer
+
+
+          Microsoft Entity Framework Core.Tools
+
+
+
+
+     Database Connection
+
+
+     Define ConnectionStrings
+
+
+    "DefaultConnection": "Server=DESKTOP-HEEKBHE\\SQLEXPRESS;Database=restaurantdb;Trusted_Connection=True;TrustServerCertificate=True"
+
+
+
+
+     Db Context Class Names
+
+
+    ApplicationDemo
+
+    DataCode
+
+    MySpace
+
+
+    Db Context Code
+
+   Application Demo
+
+
+   public class ApplicationDemo: DbContext
+
+
+   public ApplicationDemo(DbContextOptions<ApplicationDemo> options)
+
+         : base(options)
+
+         {
+
+
+         }
+
+
+   public DbSet<Products> Product {get; set;}
+
+
+
+
+
+  DataCode
+
+
+  public class DataCode: DbContext
+
+
+   public DataCode(DbContextOptions<DataCode> choices)
+
+         : base(choices)
+
+         {
+
+
+         }
+
+
+   public DbSet<Orders> Order {get; set;}
+
+
+
+  MySpace
+
+  public class MySpace: DbContext
+
+
+   public MySpace(DbContextOptions<MySpace> actions)
+
+         : base(actions)
+
+         {
+
+
+         }
+
+
+   public DbSet<Categories> Category {get; set;}
+
+
+
+
+
+      program.cs
+
+
+     builder.Services.AddDbContext<ApplicationDemo>(options =>
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    });
+
+
+     builder.Services.AddDbContext<DataCode>(choices =>
+    {
+        choices.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    });
+
+
+
+     builder.Services.AddDbContext<MySpace>(actions =>
+    {
+        actions.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    });
+
+  
